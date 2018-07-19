@@ -5,11 +5,17 @@ Enter items to make a list (optional aisle,index,store name and price)
   * aisle/index/store allows items to be sorted to ease shopping experience 
     (items with same aisle/index will be grouped by menu item color)
     Note, This drop down allows:
+      
       -selection of a previously added index/aisle/location
+      
       -Add Index the addition of an index/aisle/location
+      
       -Edit allows editing of item name
+      
       -Price to change or add price
+      
       -Delete to completely remove item from list
+      
   * price allows totals to be generated so there's no surprises at check out
   * tax when checked adds sales tax (to edit sales tax amount use menu icon in the upper right)
   * count will multiply dollar amounts and effect total items amount in lower left
@@ -26,8 +32,11 @@ Enter items to make a list (optional aisle,index,store name and price)
  Menu (Upper right)
  provides the following selections:
   * Sort by Name or Sort by Index
+  
     -Sort by Index helps you shop for all items by aisle/location
+    
     -Sort by Name helps you locate items on the list easier
+    
   * Font Size allows you to modify list item font size
   * Tax allows editing/viewing of current sales tax amount
   * Save lets you save current master list that you can "Restore" if items are deleted later (this uses localStorage specific to device in wich you are displaying this application on)
