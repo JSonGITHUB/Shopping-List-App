@@ -42,5 +42,5 @@ Enter items to make a list (optional aisle,index,store name and price)
   * Save lets you save current master list that you can "Restore" if items are deleted later (this uses localStorage specific to device in wich you are displaying this application on)
   * Restore lets you retrieve your saved list
   * Clear will completely clear the list items and the list will be empty (See line above to Restore)
-  * Revert will undo lastchange
+  * Revert will undo last change
   
