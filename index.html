@@ -22,7 +22,7 @@
       <input id="itemEntry" class="inputItem" v-model="newTodoText" v-on:keyup.enter="addTodo" placeholder="Add items">
       <image class="settings" src="assets/menu.png" v-on:click="toggleSettings()"/>
     </div>
-    <div class="menu">
+    <div id="menu" class="menu">
       <div class="item" v-bind:style="{ borderTop:'2px solid ' + todo.color }" v-for="(todo, index) in todos">
         <div class="itemRemove" v-bind:style="{ fontSize: fontSize + 'px' }" v-on:click="toggleCart(index)">
           <div class="itemTitle">{{ todo.title }}</div>
@@ -74,9 +74,9 @@
       </div>
     </div>
     <div id="settingsMenu">
-      <button class="settingsButton" v-for="(setting, index) in settings" v-on:click="getSetting(index)">
+      <div class="settingsButton" v-for="(setting, index) in settings" v-on:click="getSetting(index)">
           {{ settings[index] }}
-      </button>
+      </div>
     </div>
   </div>
   <script src="shop.js"></script>

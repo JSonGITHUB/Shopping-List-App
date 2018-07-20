@@ -18,20 +18,34 @@ body {
     cursor:pointer;
 }
 .settingsButton {
-    float:left;
-    font-size: 20px;
+    margin:1vh;
+    text-align: center;
+    font-size: 5vh;
+    padding: 1vh;
+    font-family: Arial, sans-serif;
+    color:#000000;
+    background-color:#CCCCCC;
+}
+@media screen and (min-height: 800px) {
+    .settingsButton {
+        font-size: 30px;
+    }
+}
+@media screen and (max-height: 400px) {
+    .settingsButton {
+        font-size: 20px;
+    }
+}
+.settingsButton:hover {
+    opacity: .7;
+    cursor:pointer;
 }
 #settingsMenu {
-    background-color: #00FF00;
+    width: 100%;
     left:0px;
     top:69px;
     position: fixed;
-    width:100%;
     height: auto;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 12px;
-    padding-bottom: 12px;
 }
 .itemOld {
     padding:20px;
@@ -52,7 +66,6 @@ body {
     background-color:#000000;
     width: 100%;
     left:0px;
-    position: relative;
 } 
 .item:hover {
     opacity: .7;

@@ -128,10 +128,13 @@ const app = new Vue({
         },
         toggleSettings: function () {
             const settingsMenu = document.getElementById("settingsMenu");
+            const menu = document.getElementById("menu");
             if (settingsMenu.style.visibility == "hidden") {
                 settingsMenu.style.visibility = "visible";
+                menu.style.visibility = "hidden";
             } else {
                 settingsMenu.style.visibility = "hidden";
+                menu.style.visibility = "visible";
             }
         },
         reIndex: function (index, selectedAisle) {
