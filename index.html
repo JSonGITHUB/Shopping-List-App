@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopping List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=.25, user-scalable=yes" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">    
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png" />
+  <link rel="shortcut icon" sizes="196x196" href="icon-196x196.png">
+  <link rel="icon" sizes="192x192" href="js_icon_192.png">
+  <link rel="stylesheet" type="text/css" href="shop.css">
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body onresize="resize()">
+  <div id="app">
+    <div class="input">
+      <input id="itemEntry" class="inputItem" v-model="newTodoText" v-on:keyup.enter="addTodo" placeholder="Add items">
+      <image class="settings" src="assets/menu.png" v-on:click="toggleSettings()"/>
+    </div>
+    <div class="menu">
+      <div class="item" v-bind:style="{ borderTop:'2px solid ' + todo.color }" v-for="(todo, index) in todos">
+        <div class="itemRemove" v-bind:style="{ fontSize: fontSize + 'px' }" v-on:click="toggleCart(index)">
+          <div class="itemTitle">{{ todo.title }}</div>
+          <image class="cart" src="assets/cart.png" v-if="todo.cart"/>
+          <image class="cart" src="assets/addToCart.png" v-if="!todo.cart"/>
+        </div>
+        <div class="itemSelectors" v-bind:style="{ backgroundColor: todo.color }">
+          <div class="flex-container">
+            <div>
+                <image src="assets/inCart.png" v-on:click="toggleSelect(index)" v-if="todo.select"/>
+                <image src="assets/putInCart.png" v-on:click="toggleSelect(index)" v-if="!todo.select"/>
+                <br>
+                ${{ todo.price }}
+            </div>
+            <div>Days<br><span class="lastPurchaseDays">{{ todo.days }}</span></div>
+            <div>Tax<br><input type="checkbox" id="tax" v-model="todo.tax" v-on:change="toggleTax(index)"></div>
+            <div>
+              Count<br>
+              <select v-model="todo.quantity" v-on:change="getTotal()">
+                <option v-for="(quantity, selectedQuantity) in quantities" :value="quantities[selectedQuantity]" v-if="quantities[selectedQuantity] == todo.quantity">
+                    {{ quantities[selectedQuantity] }}
+                </option>
+                <option v-for="(quantity, selectQuantity) in quantities" :value="quantities[selectQuantity]" v-if="quantities[selectQuantity] !== todo.quantity">
+                    {{ quantities[selectQuantity] }}
+                </option>
+              </select>
+            </div>
+            <div id="aisle">
+              Aisle<br>
+             <select v-model="todo.aisle" v-on:change="reIndex(index, todo.aisle)">
+                <option v-for="(aisle, selectedId) in aisles" :value="aisles[selectedId]" v-if="aisles[selectedId] == todo.aisle">
+                    {{ aisles[selectedId] }}
+                </option>
+                <option v-for="(aisle, selectIndex) in aisles" :value="aisles[selectIndex]" v-if="aisles[selectIndex] !== todo.aisle">
+                  {{ aisles[selectIndex] }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="total">
+          <div class="totalItems">
+            Items: {{ items }}<br>total: {{ totalItems }}
+          </div>
+          <div class="totalDollars">
+            Tax: $ {{ taxTotal }}<br>Total: $ {{ total }}
+          </div>
+      </div>
+    </div>
+    <div id="settingsMenu">
+      <button class="settingsButton" v-for="(setting, index) in settings" v-on:click="getSetting(index)">
+          {{ settings[index] }}
+      </button>
+    </div>
+  </div>
+  <script src="shop.js"></script>
+</body>
+</html>
