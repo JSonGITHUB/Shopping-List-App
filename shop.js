@@ -11,7 +11,7 @@ const app = new Vue({
         fontSize: 25,
         tax: 7.75,
         todos: [],
-        itemMenuDefault: ["Add Index", "Edit", "Price", "Delete"],
+        itemMenuDefault: ["ADD INDEX", "EDIT", "PRICE", "DELETE"],
         aisles: [],
         quantities: [0,1,2,3,4,5,6,7,8,9,10],
         retrievedData: "",
@@ -135,7 +135,7 @@ const app = new Vue({
             }
         },
         reIndex: function (index, selectedAisle) {
-            if (selectedAisle == "Delete") {
+            if (selectedAisle == "DELETE") {
                 this.retrievedData = localStorage.getItem("vueTodosSaved");
                 this.retrievedData = JSON.parse(this.retrievedData);
                 for (x in this.retrievedData) {
@@ -145,7 +145,7 @@ const app = new Vue({
                 }
                 localStorage.setItem("vueTodosSaved", JSON.stringify(this.retrievedData));
                 this.todos.splice(index, 1);
-            } else if (selectedAisle == "Price") {
+            } else if (selectedAisle == "PRICE") {
                 this.todos[index].price = Number(prompt("Enter price:", "")).toFixed(2);
                 this.retrievedData = localStorage.getItem("vueTodosSaved");
                 this.retrievedData = JSON.parse(this.retrievedData);
@@ -157,7 +157,7 @@ const app = new Vue({
                 }
                 this.updateAisles();
                 localStorage.setItem("vueTodosSaved", JSON.stringify(this.retrievedData));
-            } else if (selectedAisle == "Edit") {
+            } else if (selectedAisle == "EDIT") {
                 this.ogTitle = this.todos[index].title;
                 this.todos[index].title = prompt("Enter new label:", this.todos[index].title);
                 this.retrievedData = localStorage.getItem("vueTodosSaved");
@@ -173,7 +173,7 @@ const app = new Vue({
                 localStorage.setItem("vueTodosSaved", JSON.stringify(this.retrievedData));
                 this.ogTitle = "";
             } else {
-                if (selectedAisle == "Add Index") {
+                if (selectedAisle == "ADD INDEX") {
                     selectedAisle = prompt("Enter aisle number:", "");
                     if(this.aisles.indexOf(selectedAisle) < 0){
                         this.aisles.push(selectedAisle);
