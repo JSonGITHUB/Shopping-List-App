@@ -20,9 +20,10 @@ const app = new Vue({
             "Font Size",
             "Tax",
             "Save", 
-            "Restore", 
+            "Restore",
+            "Export",
             "Clear", 
-            "Revert"
+            "Undo"
         ],
         newItem: {
             title: '', 
@@ -212,12 +213,14 @@ const app = new Vue({
             } else if (this.settings[index] == "Font Size") {
                 this.fontSize = prompt("Enter font size", this.fontSize);
                 localStorage.setItem("fontSize", this.fontSize);
-            } else if (this.settings[index] == "Revert") {
+            } else if (this.settings[index] == "Undo") {
                 this.revert();
             } else if (this.settings[index] == "Save") {
                 this.save();
             } else if (this.settings[index] == "Restore") {
                 this.restore();
+            } else if (this.settings[index] == "Export") {
+                 console.log(JSON.stringify(this.todos));
             }
             this.toggleSettings();
         },
