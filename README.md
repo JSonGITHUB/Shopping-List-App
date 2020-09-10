@@ -1,4 +1,6 @@
 # Shopping-List-App
+jsongithub.github.io/shoppinglist/
+
 A shopping list application created with VueJS
 
 Enter items to make a list (optional aisle,index,store name and price)
